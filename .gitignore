@@ -1,0 +1,8 @@
+/SDL2-2.0.12
+meson.build
+/pong/.vs
+/pong/Debug
+/pong/x64
+/pong/*.user
+/pong/*.filters
+/pong/*.vcxproj
