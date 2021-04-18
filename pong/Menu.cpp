@@ -1,5 +1,7 @@
 #include "Menu.hpp"
 #include <SDL_clipboard.h>
+
+
 Button::Button(int x, int y, int w, int h) :
 	box(), clip(nullptr)
 {
@@ -9,7 +11,7 @@ Button::Button(int x, int y, int w, int h) :
 	box.h = h;
 }
 
-void Button::setDefaultSprite()
-{
-	clip = &clips[CLIP_MOUSEOUT];
-}
+//void Button::setDefaultSprite()
+//{
+//	clip = &clips[CLIP_MOUSEOUT];
+//}

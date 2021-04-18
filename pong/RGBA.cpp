@@ -1,6 +1,17 @@
 #include "RGBA.hpp"
-RGBA::RGBA(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) :
-	red(red), green(green), blue(blue), alpha(alpha)
-{
 
+const Colors& colors()
+{
+	static Colors colors{
+		{"WHITE", RGBA_color(255, 255, 255, 1)},
+		{"PURPLE", RGBA_color(255, 140, 255, 1)},
+		{"BLACK", RGBA_color(0, 0, 0, 1)},
+	};
+
+	return colors;
 }
+
+
+RGBA::RGBA(const RGBA_color color) :
+	color(color)
+{}

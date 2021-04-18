@@ -1,10 +1,10 @@
 #include "Helpers.hpp"
 
-SDL_Window* createWindow() noexcept
+SDL_Window* createWindow(const char* title, const int height, const int width) noexcept
 {
 	SDL_Window* window = nullptr;
-	window = SDL_CreateWindow("Cyber Pong", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-		1280, 720, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
+		height, width, SDL_WINDOW_OPENGL);
 	return window;
 }
 
@@ -16,13 +16,13 @@ void checkIfWindowWasCreated(SDL_Window* window)
 	}
 }
 
-void changeWindowBackgroundColor(SDL_Renderer* renderer, RGBA color) noexcept
-{
-	SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
-	SDL_RenderClear(renderer);
-	SDL_RenderPresent(renderer);
-	return;
-}
+//void changeWindowBackgroundColor(SDL_Renderer* renderer, RGBA color) noexcept
+//{
+//	SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
+//	SDL_RenderClear(renderer);
+//	SDL_RenderPresent(renderer);
+//	return;
+//}
 
 SDL_Renderer* createRenderer(SDL_Window* window) noexcept
 {

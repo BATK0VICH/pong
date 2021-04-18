@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include "RGBA.hpp"
 
-SDL_Window* createWindow() noexcept;
+SDL_Window* createWindow(const char* title, const int height, const int width) noexcept;
 void checkIfWindowWasCreated(SDL_Window* window);
 
 void changeWindowBackgroundColor(SDL_Renderer* renderer, RGBA color) noexcept;

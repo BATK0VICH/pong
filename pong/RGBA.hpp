@@ -1,13 +1,20 @@
 #ifndef RGBA_HPP_
 #define RGBA_HPP_
-
+#include <map>
+#include <tuple>
 #include <cstdint>
+#include <string>
+
+typedef std::tuple<uint8_t, uint8_t, uint8_t, uint8_t> RGBA_color;
+typedef std::map<std::string, RGBA_color> Colors;
+
+const Colors& colors();
 
 class RGBA
 {
 public:
-	uint8_t red, green, blue, alpha;
-	RGBA(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
+	RGBA_color color;
+	RGBA(const RGBA_color);
 };
 
 
