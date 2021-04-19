@@ -10,8 +10,7 @@ int main(void)
 {
 	initializeVideo();
 
-	Window window("CyberPong", 1280, 720, "WHITE");
-	window.changeBackgroundColor(colors().at("PURPLE"));
+	WindowWithBackground window("CyberPong", 1280, 720, "PURPLE");
 
 	
 	SDL_Delay(3000);

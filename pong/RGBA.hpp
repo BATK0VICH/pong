@@ -13,8 +13,10 @@ const Colors& colors();
 class RGBA
 {
 public:
-	RGBA_color color;
-	RGBA(const RGBA_color);
+	RGBA_color colorCode;
+	RGBA(const std::string colorName);
+private:
+	RGBA_color createRGBA_colorFromStr(std::string color);
 };
 
 

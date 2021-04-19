@@ -12,14 +12,22 @@ public:
 private:
 	int height, width;
 	std::string title;
-	Background background;
 public:
-	Window(const std::string title, const int height, const int width, const std::string color);
-	void changeBackgroundColor(RGBA color);
+	Window(const std::string title, const int height, const int width);
 	~Window();
 private:
 	void createWindow(const char* title, const int height, const int width) noexcept;
 	void checkIfWindowWasCreated();
+};
+
+class WindowWithBackground : public Window
+{
+private:
+	Background background;
+public:
+	WindowWithBackground(const std::string title, const int height, 
+		const int width, const std::string color);
+	void changeBackgroundColor(std::string color);
 };
 
 #endif

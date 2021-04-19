@@ -12,8 +12,8 @@ private:
 	RGBA color;
 public:
 	Background();
-	Background(SDL_Window* const window, const std::string color);
-	void changeBackgroundColor(RGBA color);
+	Background(SDL_Window* const window, const std::string colorName);
+	void changeBackgroundColor(std::string colorName);
 private:
 	void createRenderer(SDL_Window* const window) noexcept;
 	void checkIfRendererWasCreated();

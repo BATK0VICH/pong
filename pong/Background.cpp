@@ -2,13 +2,13 @@
 #include <tuple>
 
 Background::Background() :
-	renderer(nullptr), color(colors().at("WHITE"))
+	renderer(nullptr), color("WHITE")
 {
 
 }
 
 Background::Background(SDL_Window* const window, const std::string color) :
-	renderer(nullptr), color(colors().at(color))
+	renderer(nullptr), color(color)
 {
 	this->createRenderer(window);
 	this->checkIfRendererWasCreated();
@@ -27,13 +27,13 @@ void Background::checkIfRendererWasCreated()
 	}
 }
 
-void Background::changeBackgroundColor(RGBA color)
+void Background::changeBackgroundColor(std::string colorName)
 {
 	this->checkIfRendererWasCreated();
-	this->color = color;
-	RGBA_color RGBA_color_tuple = color.color;
-	SDL_SetRenderDrawColor(this->renderer, std::get<0>(RGBA_color_tuple),
-		std::get<1>(RGBA_color_tuple), std::get<2>(RGBA_color_tuple), std::get<3>(RGBA_color_tuple));
+	this->color = RGBA(color);
+	RGBA_color RGBAcolorCode = color.colorCode;
+	SDL_SetRenderDrawColor(this->renderer, std::get<0>(RGBAcolorCode),
+		std::get<1>(RGBAcolorCode), std::get<2>(RGBAcolorCode), std::get<3>(RGBAcolorCode));
 	SDL_RenderClear(this->renderer);
 	SDL_RenderPresent(renderer);
 }

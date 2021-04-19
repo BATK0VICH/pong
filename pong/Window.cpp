@@ -1,13 +1,13 @@
 #include "Window.hpp"
 #include <stdexcept>
 #include <string>
+#include "RGBA.hpp"
 
-Window::Window(const std::string title, const int height, const int width, const std::string color) :
+Window::Window(const std::string title, const int height, const int width) :
 	window(nullptr), height(height), width(width), title(title)
 {
 	this->createWindow(title.c_str(), height, width);
 	this->checkIfWindowWasCreated();
-	background = Background(window, color);
 }
 
 void Window::createWindow(const char* title, const int height, const int width) noexcept
@@ -24,12 +24,20 @@ void Window::checkIfWindowWasCreated()
 	}
 }
 
-void Window::changeBackgroundColor(RGBA color)
-{
-	this->background.changeBackgroundColor(color);
-}
-
 Window::~Window()
 {
 	SDL_DestroyWindow(this->window);
+}
+
+WindowWithBackground::WindowWithBackground(const std::string title, const int height, 
+	const int width, const std::string colorName) :
+	Window(title, height, width)
+{
+	background = Background(window, colorName);
+	background.changeBackgroundColor(colorName);
+}
+
+void WindowWithBackground::changeBackgroundColor(std::string colorName)
+{
+	background.changeBackgroundColor(colorName);
 }
