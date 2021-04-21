@@ -8,6 +8,9 @@ Window::Window(const std::string title, const int height, const int width) :
 {
 	this->createWindow(title.c_str(), height, width);
 	this->checkIfWindowWasCreated();
+
+	this->createRenderer();
+	this->checkIfRendererWasCreated();
 }
 
 void Window::createWindow(const char* title, const int height, const int width) noexcept
@@ -21,6 +24,19 @@ void Window::checkIfWindowWasCreated()
 	if (window == NULL)
 	{
 		throw(std::runtime_error("Unable to create window"));
+	}
+}
+
+void Window::createRenderer(SDL_Window* const window) noexcept
+{
+	renderer = SDL_CreateRenderer(window, -1, 0);
+}
+
+void Window::checkIfRendererWasCreated()
+{
+	if (this->renderer == NULL)
+	{
+		throw(std::runtime_error("Unable to create renderer"));
 	}
 }
 
@@ -40,4 +56,6 @@ WindowWithBackground::WindowWithBackground(const std::string title, const int he
 void WindowWithBackground::changeBackgroundColor(std::string colorName)
 {
 	background.changeBackgroundColor(colorName);
+	RGBA_color RGBA_colorCode = RGBA(colorName).getRGBA_ColorCode();
+	
 }

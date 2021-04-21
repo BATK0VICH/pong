@@ -2,7 +2,7 @@
 #define INITIALIZATION_HPP
 
 void initializeVideo();
-
+void initializeEverything();
 
 #endif
 

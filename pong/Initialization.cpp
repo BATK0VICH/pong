@@ -10,3 +10,8 @@ void initializeVideo()
 	}
 	return;
 }
+
+void initializeEverything()
+{
+	initializeVideo();
+}

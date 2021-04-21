@@ -3,7 +3,7 @@
 
 
 Button::Button(int x, int y, int w, int h) :
-	box(), clip(nullptr)
+	box(), clip(nullptr), background()
 {
 	box.x = x; 
 	box.y = y; 

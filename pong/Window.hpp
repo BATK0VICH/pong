@@ -2,13 +2,13 @@
 #define WINDOW_HPP
 #include <SDL.h>
 #include <string>
-#include "Background.hpp"
 #include "RGBA.hpp"
 
 class Window
 {
 public:
 	SDL_Window* window;
+	SDL_Renderer renderer;
 private:
 	int height, width;
 	std::string title;
@@ -18,6 +18,9 @@ public:
 private:
 	void createWindow(const char* title, const int height, const int width) noexcept;
 	void checkIfWindowWasCreated();
+
+	void createRenderer(SDL_Window* const window) noexcept;
+	void checkIfRendererWasCreated();
 };
 
 class WindowWithBackground : public Window
