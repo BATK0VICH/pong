@@ -27,9 +27,11 @@ void Window::checkIfWindowWasCreated()
 	}
 }
 
-void Window::createRenderer(SDL_Window* const window) noexcept
+void Window::createRenderer() noexcept
 {
 	renderer = SDL_CreateRenderer(window, -1, 0);
+	SDL_RenderSetLogicalSize(renderer, 400, 400);
+
 }
 
 void Window::checkIfRendererWasCreated()
@@ -49,13 +51,22 @@ WindowWithBackground::WindowWithBackground(const std::string title, const int he
 	const int width, const std::string colorName) :
 	Window(title, height, width)
 {
-	background = Background(window, colorName);
-	background.changeBackgroundColor(colorName);
+	changeBackgroundColor(colorName);
 }
 
 void WindowWithBackground::changeBackgroundColor(std::string colorName)
 {
-	background.changeBackgroundColor(colorName);
-	RGBA_color RGBA_colorCode = RGBA(colorName).getRGBA_ColorCode();
-	
+	RGBA_color RGBA_colorCode = RGBA(colorName).colorCode;
+	renderColor(renderer, RGBA_colorCode);
+}
+
+void renderColor(SDL_Renderer* renderer, RGBA_color RGBA_colorCode)
+{
+	uint8_t red{ std::get<0>(RGBA_colorCode) };
+	uint8_t green{ std::get<1>(RGBA_colorCode) };
+	uint8_t blue{ std::get<2>(RGBA_colorCode) };
+	uint8_t alpha{ std::get<3>(RGBA_colorCode) };
+	SDL_SetRenderDrawColor(renderer, red, green, blue, alpha);
+	SDL_RenderClear(renderer);
+	SDL_RenderPresent(renderer);
 }
